@@ -1,11 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/Users/Trey'
-let g:netrw_dirhist_2='/Users/Trey/CodeAcademy/workshop/hacknight/SixDegrees/src'
-let g:netrw_dirhist_3='/Users/Trey/CodeAcademy/workshop/hacknight/SixDegrees'
-let g:netrw_dirhist_4='/Users/Trey/CodeAcademy/workshop/hacknight'
-let g:netrw_dirhist_5='/Users/Trey/CodeAcademy/workshop/hacknight/Scrabble'
-let g:netrw_dirhist_6='/Users/Trey/Enova/CATS/CATSv02'
-let g:netrw_dirhist_7='/Users/Trey/.rvm'
-let g:netrw_dirhist_8='/Users/Trey/Enova/CATS/CATSv03/db/migrate'
-let g:netrw_dirhist_9='/Users/Trey/Enova/CATS/CATSv03/spec'
+let g:netrw_dirhist_cnt =0
