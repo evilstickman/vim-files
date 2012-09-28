@@ -29,8 +29,8 @@ bind -n M-k select-pane -U
 bind -n M-l select-pane -R
 
 # window splitting
-bind-key s split-window -h
-bind-key v split-window
+bind-key | split-window -h
+bind-key - split-window
 
 # choose session
 bind-key -n M-0 choose-session
@@ -98,8 +98,6 @@ set-window-option -g mode-mouse on
 # pane border and colors
 set-option -g pane-active-border-fg green
 set-option -g pane-border-fg white
-bind | split-window -h
-bind - split-window -v
 
 # move x clipboard into tmux paste buffer
 bind C-p run "tmux set-buffer \"$(xclip -o)\"; tmux paste-buffer"
