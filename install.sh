@@ -11,7 +11,7 @@ ln -sf  "$FOLDER"/vim           ~/.vim
 ln -sf  "$FOLDER"/tmuxconf      ~/.tmux.conf
 ln -sf  "$FOLDER"/gemrc         ~/.gemrc
 ln -sf  "$FOLDER"/irbrc         ~/.irbrc
-ln -sf  "$FOLDER"/gitconfig     ~/.gitconfig
+# ln -sf  "$FOLDER"/gitconfig     ~/.gitconfig
 echo    "Setup symlinks"
 
 # reload tmux config
