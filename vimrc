@@ -2,6 +2,9 @@ call pathogen#infect()
 call pathogen#runtime_append_all_bundles()
 
 syntax on
+set t_Co=256
+set background=dark
+colorscheme jellybeans
 
 " settings 
 set nocompatible                " don't hack around for vi compatiblity
@@ -41,7 +44,8 @@ set tags=~/.tags                " grab tags directory, all the way up to root
 set title                       " set the title
 
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_working_path_mode = 2set wildignore+=*/cabar/*,*/cnu_active_record/*,*/cnuapp_ci/*,*/cnuapp_doc/*,*/cnuapp_env/*
+let g:ctrlp_working_path_mode = 2
+set wildignore+=*/cabar/*,*/cnu_active_record/*,*/cnuapp_ci/*,*/cnuapp_doc/*,*/cnuapp_env/*
 set wildignore+=*/cnuapp_qa/*,*/cnuapp_rack/*,*/cnu_bloom/*,*/cnu_brand/*,*/cnu_cluster/*
 set wildignore+=*/cnu_config/*,*/cnu_content/*,*/cnu_database/*,*/cnu_gems/*,*/cnu_ivr/*
 set wildignore+=*/cnu_ldap/*,*/cnu_logger/*,*/cnu_memcache/*,*/cnu_perf/*
@@ -68,7 +72,8 @@ let g:ctrlp_custom_ignore = {
 
 let g:ctrlp_max_files =0
 let g:ctrlp_max_depth =1000
-let g:ctrlp_max_height = 50let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_max_height = 50
+let g:ctrlp_clear_cache_on_exit = 0
 autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context let highlight def link rubyRspec Function
 " set statusline
 set laststatus=2
@@ -78,6 +83,19 @@ set statusline+=[%p%%]
 
 set ruler
 :set laststatus=2
+
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle 'gf3/vim-css-color'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-cucumber'
+Bundle 'bangloss/vim-javascript'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'kien/rainbow_parenthesis.vim'
 
 " filetypes
 filetype on               
@@ -95,6 +113,7 @@ if has('autocmd')
   au BufNewFile,BufRead *.ejs set filetype=html " ejs suppport
   au BufNewFile,BufRead *.tpl set filetype=ruby " tpl support for ruby
   au BufRead,BufNewFile *.todo setfiletype todo 
+  au BufRead,BufNewFile Rakefile,Capfile,Gemfile,.autotest,.irbrc,*.treetop,*.tt set ft=ruby syntax=ruby
 endif
 
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'

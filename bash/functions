@@ -1,0 +1,74 @@
+# virtual machines
+function vmstart() { 
+  VBoxHeadless --startvm "$1" &
+}
+
+function vmstop { 
+  VBoxManage controlvm "$1" savestate
+} 
+
+# Create a new directory and enter it
+function mkd() {
+  mkdir -p "$@" && cd "$@"
+}
+
+# Determine size of a file or total size of a directory
+function fs() {
+  if du -b /dev/null > /dev/null 2>&1; then
+    local arg=-sbh
+  else
+    local arg=-sh
+  fi
+  if [[ -n "$@" ]]; then
+    du $arg -- "$@"
+  else
+    du $arg .[^.]* *
+  fi
+}
+
+# Use Git’s colored diff when available
+hash git &>/dev/null
+if [ $? -eq 0 ]; then
+  function diff() {
+    git diff --no-index --color-words "$@"
+  }
+fi
+
+# Add note to Notes.app (OS X 10.8)
+# Usage: `note 'foo'` or `echo 'foo' | note`
+function note() {
+  local text
+  if [ -t 0 ]; then # argument
+    text="$1"
+  else # pipe
+    text=$(cat)
+  fi
+  body=$(echo "$text" | sed -E 's|$|<br>|g')
+  osascript >/dev/null <<EOF
+tell application "Notes"
+  tell account "iCloud"
+    tell folder "Notes"
+      make new note with properties {name:"$text", body:"$body"}
+    end tell
+  end tell
+end tell
+EOF
+}
+
+# Add reminder to Reminders.app (OS X 10.8)
+# Usage: `remind 'foo'` or `echo 'foo' | remind`
+function remind() {
+  local text
+  if [ -t 0 ]; then
+    text="$1" # argument
+  else
+    text=$(cat) # pipe
+  fi
+  osascript >/dev/null <<EOF
+tell application "Reminders"
+  tell the default list
+    make new reminder with properties {name:"$text"}
+  end tell
+end tell
+EOF
+}
