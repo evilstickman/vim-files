@@ -1,6 +1,25 @@
 call pathogen#infect()
 call pathogen#runtime_append_all_bundles()
 
+filetype off
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle 'gf3/vim-css-color'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-cucumber'
+Bundle 'bangloss/vim-javascript'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'kien/rainbow_parenthesis.vim'
+
+" filetypes
+filetype on               
+filetype plugin on
+filetype indent on
+
 syntax on
 set t_Co=256
 set background=dark
@@ -84,23 +103,6 @@ set statusline+=[%p%%]
 set ruler
 :set laststatus=2
 
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'gf3/vim-css-color'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-cucumber'
-Bundle 'bangloss/vim-javascript'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'kien/rainbow_parenthesis.vim'
-
-" filetypes
-filetype on               
-filetype plugin on
-filetype indent on
 
 if has('autocmd')
   au filetype php set tabstop=4                 " four spaces for PHP tabs
