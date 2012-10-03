@@ -1,12 +1,13 @@
-if [[ $platform = 'linux' ]]; then
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
   # cnu paths
-  export PATH=/cnu/bin:/export/web/stable/cnuapp/bin:/export/web/cnuapp/lib/service_mgr/bin:${HOME}/cnu-tools/bin:/export/web/stable/cabar/bin:/etc/postgresql/8.3/main:${PATH}
+  export PATH=/cnu/bin:/export/web/stable/cnuapp/bin:/export/web/cnuapp/lib/service_mgr/bin:${HOME}/cnu-tools/bin:/export/web/stable/cabar/bin:/etc/postgresql/8.4/main:/etc/postgresql/8.3/main:${PATH}
   # cnu shortcuts
   alias ew='cd /export/web'
-  alias fullreloadcnu='cd /export/web/cnuapp; bin/cnurake db:rebuild name=cnuapp_dev_gb cl=GB force=true; sudo sv d /var/service/*; sudo sv u /var/service/*; htop'
+  alias fullreloadcnu='cd /export/web/cnuapp; sudo PGPORT=5434 bin/cnurake db:rebuild name=cnuapp_dev_gb cl=GB ver=8.4 verbose=1 force=true; sudo sv d /var/service/*; sudo sv u /var/service/*; htop'
   alias reloadcnu='sudo sv d /var/service/*; sudo sv u /var/service/*; htop'
   alias cnuconsole='/export/web/cnuapp/script/console'
-  alias psqlslave='psql -h slavedb.quickquid.co.uk -p 5432 cnuapp_prod_uk -U dspringer'
+  alias psqlslave='psql -h slavedb.quickquid.co.uk -p 5434 cnuapp_prod_uk -U dspringer'
   alias cnurspec='cd /export/web/suite; ../cnuapp/bin/cnu_env rspec'
   alias zanddb='psql -h zanddb.cashnetusa.com -p 5432 -U dspringer uksms_production'
   # logs
@@ -15,7 +16,7 @@ if [[ $platform = 'linux' ]]; then
   alias logs='tail -f /var/log/cnuapp/*.log'
   alias elog='tail -f /var/log/cnuapp/stderr.log'
   alias slog='tail -f /export/web/cnuapp/web/cnuapp/var/service_mgr*/*.log'
-  alias findpete='tail -f loc.log | grep "PETE"'
+  alias findtrey='tail -f loc.log | grep "TREY"'
   # git completion on debian  
   source /etc/bash_completion.d/git
   GIT_PS1_SHOWDIRTYSTATE=true
