@@ -1,5 +1,5 @@
 call pathogen#infect()
-call pathogen#runtime_append_all_bundles()
+call pathogen#incubate()
 
 filetype off
 set rtp+=~/.vim/bundle/vundle
