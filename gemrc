@@ -3,7 +3,6 @@
 :verbose: true
 :sources: 
 - http://rubygems.org/
-- http://gems.enova.com
 gem: --no-ri --no-rdoc
 :update_sources: true
 :backtrace: false
