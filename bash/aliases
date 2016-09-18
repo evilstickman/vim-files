@@ -1,24 +1,5 @@
 unamestr=`uname`
 if [[ "$unamestr" == 'Linux' ]]; then
-  # cnu paths
-  export PATH=/cnu/bin:/export/web/stable/cnuapp/bin:/export/web/cnuapp/lib/service_mgr/bin:${HOME}/cnu-tools/bin:/export/web/stable/cabar/bin:/etc/postgresql/8.4/main:/etc/postgresql/8.3/main:${PATH}
-  # cnu shortcuts
-  alias ew='cd /export/web'
-  alias fullreloadcnu_us='cd /export/web/cnuapp; sudo ver=9.1 PGPORT=5434 bin/cnurake db:rebuild name=cnuapp_dev cl=US ver=8.4 verbose=1 force=true; sudo sv d /var/service/*; sudo sv u /var/service/*; htop'
-  alias fullreloadcnu='cd /export/web/cnuapp; sudo ver=9.1 PGPORT=5434 bin/cnurake db:rebuild name=cnuapp_dev_gb cl=GB ver=8.4 verbose=1 force=true; sudo sv d /var/service/*; sudo sv u /var/service/*; htop'
-  alias reloadcnu='sudo sv d /var/service/*; sudo sv u /var/service/*; htop'
-  alias cnuconsole='/export/web/cnuapp/script/console'
-  alias psqlslave='psql -h slavedb.quickquid.co.uk -p 5432 cnuapp_prod_uk -U mbillock'
-  alias psqlslave_us='psql -h slavedb.cashnetusa.com -p 5432 cnuapp_prod -U mbillock'
-  alias cnurspec='cd /export/web/suite; ../cnuapp/bin/cnu_env rspec'
-  alias zanddb='psql -h zanddb.cashnetusa.com -p 5432 -U mbillock uksms_production'
-  # logs
-  alias flog='tail -f /var/log/cnuapp/frontend.log'
-  alias plog='tail -f /var/log/cnuapp/portal.log'
-  alias logs='tail -f /var/log/cnuapp/*.log'
-  alias elog='tail -f /var/log/cnuapp/stderr.log'
-  alias slog='tail -f /export/web/cnuapp/web/cnuapp/var/service_mgr*/*.log'
-  alias findtrey='tail -f loc.log | grep "TREY"'
   # git completion on debian  
   source /etc/bash_completion.d/git
   GIT_PS1_SHOWDIRTYSTATE=true
