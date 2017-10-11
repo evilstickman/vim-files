@@ -1,25 +1,34 @@
 call pathogen#infect()
-call pathogen#runtime_append_all_bundles()
-
+call pathogen#helptags()
 filetype off
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'gf3/vim-css-color'
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Bundle 'https://github.com/gorodinskiy/vim-coloresque.git'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-cucumber'
-Bundle 'bangloss/vim-javascript'
+Bundle 'pangloss/vim-javascript'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'kien/rainbow_parenthesis.vim'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'tpope/vim-fugitive'
+Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+Bundle 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/syntastic'
+Plugin 'nvie/vim-flake8'
+call vundle#end()
 
 " filetypes
 filetype on               
 filetype plugin on
 filetype indent on
 
+let python_highlight_all=1
 syntax on
 set t_Co=256
 set background=dark
@@ -96,6 +105,7 @@ if has('autocmd')
   au BufRead,BufNewFile *.todo setfiletype todo 
   au BufRead,BufNewFile Rakefile,Capfile,Gemfile,.autotest,.irbrc,*.treetop,*.tt set ft=ruby syntax=ruby
 endif
+
 
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
