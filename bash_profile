@@ -18,3 +18,22 @@ for file in ~/vim-files/bash/{bash_prompt,exports,functions,aliases}; do
 	[ -r "$file" ] && source "$file"
 done
 unset file
+
+function set_virtualenv () {
+  if test -z "$VIRTUAL_ENV" ; then
+      PYTHON_VIRTUALENV=""
+  else
+      PYTHON_VIRTUALENV="${BLUE}[`basename \"$VIRTUAL_ENV\"`]${COLOR_NONE} "
+  fi
+}
+
+function __git_branch_name {
+  set_virtualenv
+  branch=""
+  if [ $(git rev-parse --is-inside-work-tree 2>/dev/null) ]; then
+    branch=" (branch: $(git branch | grep \* | cut -d ' ' -f2)) "
+  fi
+  export PS1="$PYTHON_VIRTUALENV\t \u \$branch \w > "
+}
+
+PROMPT_COMMAND=__git_branch_name
